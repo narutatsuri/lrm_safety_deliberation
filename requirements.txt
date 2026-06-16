@@ -1,0 +1,22 @@
+# Core (CPU): runs every analysis + figure/table script in reproduce/ from the
+# downloaded intermediate artifacts. Install with:  pip install -r requirements.txt
+numpy>=1.24
+scipy>=1.11
+scikit-learn>=1.3
+pandas>=2.0
+matplotlib>=3.7
+tqdm>=4.66
+pyyaml>=6.0
+python-dotenv>=1.0
+huggingface-hub>=0.23
+
+# --- Heavy extras (install only for the from-scratch pipeline) ---------------
+# GPU generation / classification / representation extraction / training:
+#   pip install -e ".[gpu]"
+#     torch>=2.4  vllm>=0.15  transformers>=4.46  accelerate>=0.34  trl>=0.11  datasets>=2.20
+#   (The paper used vllm==0.15.1 and a transformers 5.6.0.dev build; pin to your
+#    cluster's working combination — vLLM and transformers are tightly coupled.)
+#
+# LLM-judge annotators (IAA + stance labeling):
+#   pip install -e ".[judges]"
+#     openai>=1.40  anthropic>=0.39  google-genai>=0.3

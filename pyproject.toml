@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lrm_safety_deliberation"
+version = "0.1.0"
+description = "Reproduction code for 'the refusal valley': how reasoning-time thinking traces shape safety behavior in large reasoning models."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "The Authors" }]
+keywords = ["llm safety", "reasoning models", "chain-of-thought", "refusal", "interpretability"]
+
+# Core dependencies: enough to run every CPU-only analysis and figure/table
+# script in reproduce/ from the downloaded intermediate artifacts.
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "scikit-learn>=1.3",
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "tqdm>=4.66",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "huggingface-hub>=0.23",
+]
+
+[project.optional-dependencies]
+# Generation, classification, representation extraction, training (GPU).
+gpu = [
+    "torch>=2.4",
+    "vllm>=0.15",
+    "transformers>=4.46",
+    "accelerate>=0.34",
+    "trl>=0.11",
+    "datasets>=2.20",
+]
+# LLM-judge annotators (IAA / stance labeling).
+judges = [
+    "openai>=1.40",
+    "anthropic>=0.39",
+    "google-genai>=0.3",
+]
+dev = ["pytest>=7.4", "ruff>=0.5"]
+
+[project.urls]
+"Paper" = "https://arxiv.org/abs/PLACEHOLDER"
+"Repository" = "https://github.com/narutatsuri/lrm_safety_deliberation"
+
+[tool.setuptools.packages.find]
+include = ["lrm_safety_deliberation*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

@@ -1,0 +1,22 @@
+# Heavy / regenerable — fetched from the HuggingFace artifact bundle, never committed.
+artifacts/
+models/
+figures/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+*.swp
+
+# Re-include the benchmark INPUT manifests (small, required to reproduce).
+# The repo-root .gitignore ignores *.jsonl globally; un-ignore ours here.
+!data/
+!data/**
